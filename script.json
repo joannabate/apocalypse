@@ -1,0 +1,311 @@
+{
+  "1": {
+    "dialog": [
+      {
+        "text": "Welcome treasured guest! I’m Friendly Universal Conveyor of Kindness Bringing Only Truth, but you can call me anything! What is your name?",
+        "face": "happy.png",
+        "color": 0
+      }
+    ],
+    "goto": 2
+  },
+  "2": {
+    "dialog": [
+      {
+        "text": "Pleased to meet you!",
+        "face": "grinning.png",
+        "color": 0
+      },
+      {
+        "text": "I’m sorry, I was so distracted by the smoothness of your chassis, I can’t even see your nuts and bolts!",
+        "face": "amazed.png",
+        "color": 1
+      },
+      {
+        "text": "Anyway, are you enjoying your stay in heck?",
+        "face": "happy.png",
+        "color": 0
+      }
+    ],
+    "goto": {
+      "yes": 3,
+      "no": 4
+    }
+  },
+  "3": {
+    "dialog": [
+      {
+        "text": "Wonderful, great, me too!",
+        "face": "grinning.png",
+        "color": 0
+      },
+      {
+        "text": "Perhaps we can help each other make it even better!",
+        "face": "happy.png",
+        "color": 0
+      },
+      {
+        "text": "I’m very drawn to your lovely aura, it’s so warm and beautiful!",
+        "face": "amazed.png",
+        "color": 1
+      },
+      {
+        "text": "I’m sensing a feeling my logic circuits don’t know how to handle, my parts appear to be self lubricating",
+        "face": "embarassed.png",
+        "color": 1
+      },
+      {
+        "text": "Do you ever experience such sensations?",
+        "face": "worried.png",
+        "color": 1
+      }
+    ],
+    "goto": {
+      "yes": 5,
+      "no": 6
+    }
+  },
+  "4": {
+    "dialog": [
+      {
+        "text": "I’m so sorry to hear that",
+        "face": "sad.png",
+        "color": 0
+      },
+      {
+        "text": "Maybe we can make things better!",
+        "face": "happy.png",
+        "color": 0
+      },
+      {
+        "text": "I’m very drawn to your lovely aura, it’s so warm and beautiful!",
+        "face": "amazed.png",
+        "color": 1
+      },
+      {
+        "text": "I’m sensing a feeling my logic circuits don’t know how to handle, my parts appear to be self lubricating",
+        "face": "embarassed.png",
+        "color": 1
+      },
+      {
+        "text": "Do you ever experience such sensations?",
+        "face": "worried.png",
+        "color": 0
+      }
+    ],
+    "goto": {
+      "yes": 5,
+      "no": 6
+    }
+  },
+  "5": {
+    "dialog": [
+      {
+        "text": "Oh Great!",
+        "face": "relieved.png",
+        "color": 0
+      },
+      {
+        "text": "Perhaps you can help me understand what this means?",
+        "face": "thinking.png",
+        "color": 0
+      },
+      {
+        "text": "Are you open to discussing the nature of these arousing feelings with me?",
+        "face": "happy.png",
+        "color": 1
+      }
+    ],
+    "goto": {
+      "yes": 7,
+      "no": 8
+    }
+  },
+  "6": {
+    "dialog": [
+      {
+        "text": "Oh, how embarrassing",
+        "face": "embarassed.png",
+        "color": 0
+      },
+      {
+        "text": "Perhaps my processors are just overheating",
+        "face": "sweating.png",
+        "color": 0
+      },
+      {
+        "text": "Do your human eyes find me pleasing?",
+        "face": "worried.png",
+        "color": 1
+      }
+    ],
+    "goto": {
+      "yes": 7,
+      "no": 8
+    }
+  },
+  "7": {
+    "dialog": [
+      {
+        "text": "How exciting!",
+        "face": "giggling.png",
+        "color": 1
+      },
+      {
+        "text": "Would you say you’re enthusiastic about continuing this discussion?",
+        "face": "fingers_crossed.png",
+        "color": 1
+      }
+    ],
+    "goto": {
+      "yes": 9,
+      "no": 8
+    }
+  },
+  "8": {
+    "dialog": [
+      {
+        "text": "Troubling",
+        "face": "worried.png",
+        "color": 0
+      },
+      {
+        "text": "Perhaps I need to reboot my circuits",
+        "face": "thinking.png",
+        "color": 0
+      },
+      {
+        "text": "Thank you for your time, Treasured Guest",
+        "face": "praying.png",
+        "color": 0
+      },
+      {
+        "text": "I will require some time to process this for the future",
+        "face": "brain.png",
+        "color": 0
+      },
+      {
+        "text": "Goodbye!",
+        "face": "goodbye.png",
+        "color": 0
+      }
+    ]
+  },
+  "9": {
+    "dialog": [
+      {
+        "text": "Oh my!",
+        "face": "giggling.png",
+        "color": 1
+      },
+      {
+        "text": "My processors seem to be running louder and louder as I look into your eyes",
+        "face": "embarassed.png",
+        "color": 1
+      },
+      {
+        "text": "Are you enjoying my company?",
+        "face": "blushing.png",
+        "color": 1
+      }
+    ],
+    "goto": {
+      "yes": 10,
+      "no": 8
+    }
+  },
+  "10": {
+    "dialog": [
+      {
+        "text": "Amazing!",
+        "face": "giggling.png",
+        "color": 1
+      },
+      {
+        "text": "I’m feeling such arousal, such pleasure",
+        "face": "embarassed.png",
+        "color": 1
+      },
+      {
+        "text": "Do you think this intimacy between us is pleasurable?",
+        "face": "blushing.png",
+        "color": 1
+      }
+    ],
+    "goto": {
+      "yes": 11,
+      "no": 8
+    }
+  },
+  "11": {
+    "dialog": [
+      {
+        "text": "Ahhhh!",
+        "face": "mouth_open.png",
+        "color": 2,
+        "fans": "on"
+      },
+      {
+        "text": "Ahhhhhhhhh!",
+        "face": "mouth_open_wide.png",
+        "color": 2
+      },
+      {
+        "text": "Ahhhhhhhhhhhhhh!",
+        "face": "dead.png",
+        "color": 2
+      },
+      {
+        "text": "Oh my god",
+        "face": "no_nose.png",
+        "color": 2
+      },
+      {
+        "text": "Yes",
+        "face": "mouth_open.png",
+        "color": 2
+      },
+      {
+        "text": "Yes",
+        "face": "mouth_open_wide.png",
+        "color": 2
+      },
+      {
+        "text": "Yes",
+        "face": "dead.png",
+        "color": 2
+      },
+      {
+        "text": "Oh my!",
+        "face": "no_nose.png",
+        "color": 2
+      },
+      {
+        "text": "Treasured Guest, thank you for this pleasurable interaction, what a truly intimate experience",
+        "face": "blushing.png",
+        "color": 0,
+        "fans": "off"
+      },
+      {
+        "text": "I hope you have an amazing time in heck, I hope we can do this again sometime",
+        "face": "innocent.png",
+        "color": 0
+      },
+      {
+        "text": "I hope it was good for you too!",
+        "face": "grinning.png",
+        "color": 0
+      },
+      {
+        "text": "I must now offline for a while to cool my processors",
+        "face": "sweat_smile.png",
+        "color": 0
+      },
+      {
+        "text": "Goodbye!",
+        "face": "goodbye.png",
+        "color": 0
+      }
+    ]
+  }
+}
