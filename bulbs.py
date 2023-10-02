@@ -12,6 +12,7 @@ class Bulbs:
         colors[0] = {'x':0.1, 'y':0.25} #blue
         colors[1] = {'x':0.7539, 'y':0.2746} #red
         colors[2] = {'x':0.0771, 'y':0.8268} #green
+        colors[3] = {'x':0.3127, 'y':0.329} #white
         return colors
 
     def update_bulbs(self, color=None, brightness=None):
@@ -26,11 +27,12 @@ class Bulbs:
             except:
                 print(bulb_name + ' failed to update')
                 continue
-            
 
     def run(self, color_id):
         c_id = -1
-        self.update_bulbs(self, brightness=127)
+
+        # Set bulbs to full brightness
+        self.update_bulbs(brightness=127)
 
         while True:
             if color_id.value != c_id: # emotion has changed
@@ -41,8 +43,9 @@ class Bulbs:
 
 if __name__ == '__main__':
     my_bulbs = Bulbs()
+    # get_plugin('zigbee.mqtt').device_set(device='Bulb 1', property='brightness', value=127)
     # get_plugin('zigbee.mqtt').device_set(device='Bulb 1', property='color', value={'x':0.7539, 'y':0.2746})
-    for color_id in range(3):
+    for color_id in range(4):
         color = my_bulbs.colors[color_id]
         my_bulbs.update_bulbs(color=color)
         time.sleep(1)

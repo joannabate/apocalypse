@@ -5,9 +5,12 @@ import numbers
 import speech_recognition as sr
 from google.cloud import texttospeech
 from playsound import playsound
+from os import listdir
+from os.path import isfile, join
 
 import os
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="apocalypse-roomservice-6bebad941d3f.json"
+
 
 class SpeechEngine:
    def __init__(self):
@@ -49,9 +52,9 @@ class SpeechEngine:
        
 
 class AI:
-    def __init__(self, faces):
+    def __init__(self):
         
-        self.faces = faces
+        self.faces = [f for f in listdir('faces') if isfile(join('faces', f))]
 
         self.speech_engine = SpeechEngine()
         
@@ -77,9 +80,8 @@ class AI:
             print(status, file=sys.stderr)
         self.q.put(bytes(indata))
 
-    def run(self, color_id, face_id, mic_on):
+    def run(self, color_id, face_id, stage_id):
         input_text = None
-        self.stage_id = 0
         
         r = sr.Recognizer()
 
@@ -101,54 +103,57 @@ class AI:
             except sr.RequestError as e:
                 print("Could not request results from Google Speech Recognition service; {0}".format(e))
 
-            if input_text in('reboot', 'exit'):
-                self.stage_id = 0
-                if self.direct_control:
-                    self.direct_control = False
-                self.speech_engine.respond("Rebooting")
-                face_id.value = 99
-                
-            elif input_text == 'direct control':
-                self.speech_engine.respond("Entering direct control mode")
-                self.direct_control = True
-                
-            elif 'go to stage' in input_text:
-                for number in self.number_list:
-                    if number in input_text:
-                        n = self.number_list.index(number) + 1
-                        self.stage_id = n
-                        print('going to stage ' + str(n))
-                        self.speak_dialog(color_id, face_id)
-                        break
-                        
-            else: #We have any other sort of text
-                self.process_text(input_text, color_id, face_id)
+            if input_text:
+                if input_text in('reboot', 'exit'):
+                    stage_id.value = 0
+                    if self.direct_control:
+                        self.direct_control = False
+                    self.speech_engine.respond("Rebooting")
+                    face_id.value = 99
+                    
+                elif input_text == 'direct control':
+                    self.speech_engine.respond("Entering direct control mode")
+                    self.direct_control = True
+                    
+                elif 'go to stage' in input_text:
+                    for number in self.number_list:
+                        if number in input_text:
+                            n = self.number_list.index(number) + 1
+                            stage_id.value = n
+                            print('going to stage ' + str(n))
+                            self.speak_dialog(color_id, face_id, stage_id)
+                            break
+                            
+                else: #We have any other sort of text
+                    self.process_text(input_text, color_id, face_id, stage_id)
 
-    def process_text(self, input_text, color_id, face_id):
+            input_text = None
+
+    def process_text(self, input_text, color_id, face_id, stage_id):
         if self.direct_control:
             self.speech_engine.respond(input_text)
             return
         #First run through
-        elif self.stage_id == 0:
-            self.stage_id = 1
+        elif stage_id.value == 0:
+            stage_id.value = 1
         #We don't care what the text is
         elif isinstance(self.stage['goto'], numbers.Number):
-            self.stage_id = self.stage['goto']
+            stage_id.value = self.stage['goto']
         elif self.is_no(input_text):
             #Find the next stage based on the last stage's goto logic
-            self.stage_id = self.stage['goto']['no']
+            stage_id.value = self.stage['goto']['no']
         elif self.is_yes(input_text):
             #Find the next stage based on the last stage's goto logic
-            self.stage_id = self.stage['goto']['yes']
+            stage_id.value = self.stage['goto']['yes']
         else:
             #We don't know what this text is, ask to repeat
             self.speech_engine.respond(self.repeat_question_text)
             return
-        self.speak_dialog(color_id, face_id)
+        self.speak_dialog(color_id, face_id, stage_id)
     
-    def speak_dialog(self, color_id, face_id):
+    def speak_dialog(self, color_id, face_id, stage_id):
         #Pull new stage
-        self.stage = self.script[self.stage_id]
+        self.stage = self.script[stage_id.value]
 
         #Loop through dialog
         for line in self.stage['dialog']:
@@ -157,7 +162,7 @@ class AI:
             self.speech_engine.respond(line['text'])
         
         if 'goto' not in self.stage:
-            self.stage_id = 0
+            stage_id.value = 0
             face_id.value = 99
             
     def is_yes(self, input_text):

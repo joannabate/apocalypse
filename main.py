@@ -7,31 +7,30 @@ from ai import AI
 from bulbs import Bulbs
 from video import Video
 
-def ai_loop(color_id, face_id, faces, mic_on):
-    my_ai = AI(faces)
-    my_ai.run(color_id, face_id, mic_on)
+def ai_loop(color_id, face_id, stage_id):
+    my_ai = AI()
+    my_ai.run(color_id, face_id, stage_id)
 
-def video_loop(face_id, faces, mic_on):
-    my_vid = Video(faces)
-    my_vid.run(face_id, mic_on)
+def video_loop(face_id, stage_id):
+    my_vid = Video()
+    my_vid.run(face_id, stage_id)
 
 def bulb_loop(color_id):
     my_bulbs = Bulbs() 
     my_bulbs.run(color_id)
 
 if __name__ == "__main__":
-    
-    # load faces
-    faces = [f for f in listdir('faces') if isfile(join('faces', f))]
 
     mp.set_start_method('forkserver')
+
+    faces = [f for f in listdir('faces') if isfile(join('faces', f))]
     
-    color_id = mp.Value('i', 0)
-    face_id = mp.Value('i', 99) #Boot sequence
-    mic_on = mp.Value(c_bool, False)
+    color_id = mp.Value('i', 3) #starts off white
+    face_id = mp.Value('i', faces.index('happy.png')) # starts off happy
+    stage_id = mp.Value('i', 0)
     
-    p1 = mp.Process(target=ai_loop, args=(color_id, face_id, faces, mic_on))
-    p2 = mp.Process(target=video_loop, args=(face_id, faces, mic_on))
+    p1 = mp.Process(target=ai_loop, args=(color_id, face_id, stage_id))
+    p2 = mp.Process(target=video_loop, args=(face_id, stage_id))
     p3 = mp.Process(target=bulb_loop, args=(color_id, ))
     
     p1.start()
