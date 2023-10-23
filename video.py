@@ -5,12 +5,12 @@ from os.path import isfile, join
 import random
 
 class Video:
-    def __init__(self):
+    def __init__(self, faces, videos):
         self.width = 800
         self.height = 600
         self.window_name = 'face'
-        self.faces = [f for f in listdir('faces') if isfile(join('faces', f))]
-        self.videos = [v for v in listdir('videos') if (isfile(join('videos', v)) and v[-4:] == ".mp4")]
+        self.faces = faces
+        self.videos = videos
 
         return
         
@@ -18,14 +18,18 @@ class Video:
 
         f_id = -1
         s_id = -1
-        break_video = False
+        break_stage = False
         break_esc = False
 
         while True: # First loop resets every stage
             cap = cv2.VideoCapture('videos/' + random.choice(self.videos))
 
             while True: # Second loop resets every time the face changes
-                img = cv2.imread('faces/' + self.faces[face_id.value])
+                try:
+                    img = cv2.imread('faces/' + self.faces[face_id.value])
+                except:
+                    print(face_id.value)
+                    print (self.faces)
 
                 # Resize image
                 img = cv2.resize(img, (400, 400))
@@ -67,26 +71,28 @@ class Video:
                         cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
                         continue
 
-                    # If face has changed, resetart loop
+                    # If face has changed, restart video loop
                     if f_id != face_id.value:
                         f_id = face_id.value
                         print("face changed")
                         break
-                        
-                    # If stage id has changed, resetart loop
-                    if s_id != stage_id.value:
+
+                    # If stage has changed, restart stage loop
+                    if stage_id.value != s_id:
                         s_id = stage_id.value
-                        break_video = True
+                        break_stage = True
                         print("stage changed")
                         break
 
+                    # If esc has been pressed, exit both loops
                     k = cv2.waitKey(10)
-                    if k==27:    # Esc key to stop
+                    if k==27:
                         break_esc = True
+                        print("shutting down...")
                         break
                 
-                if break_esc or break_video:
-                    break_video = False
+                if break_esc or break_stage:
+                    break_stage = False
                     break
 
             if break_esc:
