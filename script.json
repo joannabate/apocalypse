@@ -1,767 +1,1082 @@
 {
-  "1": {
-    "dialog": [
-      {
-        "text": "Welcome to Apokka Clips! We use advanced brain scan technology to figure out what will happen to you in the apocalypse.",
-        "face": "happy.png",
-        "color": 0
-      }
-    ],
-    "questions": [
-      {
-        "id": 0,
-        "text": "What is your name?",
-        "face": "happy.png",
-        "color": 0,
-        "answers": [
-          {
-            "id": "",
-            "text": "",
-            "response": "Pleased to meet you!",
-            "face": "grinning.png",
-            "color": 0
-          }
-        ]
-      }
-    ]
-  },
-  "2": {
-    "dialog": [
-      {
-        "text": "We will now determine your Apocalypse Survivor Archetype. Let's start with some questions to gauge your morality.",
-        "face": "happy.png",
-        "color": 0
-      }
-    ],
-    "questions": [
-      {
-        "id": 0,
-        "text": "Stealing is...",
-        "face": "thinking.png",
-        "color": 0,
-        "answers": [
-          {
-            "id": "A",
-            "text": "Wrong",
-            "response": "Clearly you are a moral person",
-            "face": "happy.png",
-            "color": 0
-          },
-          {
-            "id": "B",
-            "text": "Unfortunate",
-            "response": "We can all agree on that",
-            "face": "sad.png",
-            "color": 0
-          },
-          {
-            "id": "C",
-            "text": "A matter of survival",
-            "response": "Sadly that is true",
-            "face": "sad.png",
-            "color": 0
-          },
-          {
-            "id": "D",
-            "text": "Therapeutic",
-            "response": "We are concerned for your sanity",
-            "face": "worried.png",
-            "color": 0
-          }
-        ]
-      },
-      {
-        "id": 1,
-        "text": "Strength is...",
-        "face": "thinking.png",
-        "color": 0,
-        "answers": [
-          {
-            "id": "A",
-            "text": "A last resort",
-            "response": "How very moral of you",
-            "face": "happy.png",
-            "color": 0
-          },
-          {
-            "id": "B",
-            "text": "Necessary",
-            "response": "Sadly, sometimes yes",
-            "face": "sad.png",
-            "color": 0
-          },
-          {
-            "id": "C",
-            "text": "Scary",
-            "response": "No arguments there",
-            "face": "sad.png",
-            "color": 0
-          },
-          {
-            "id": "D",
-            "text": "All that matters",
-            "response": "Interesting",
-            "face": "worried.png",
-            "color": 0
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "text": "Human rights are...",
-        "face": "thinking.png",
-        "color": 0,
-        "answers": [
-          {
-            "id": "A",
-            "text": "Universal and immutable",
-            "response": "A bastion of morality",
-            "face": "happy.png",
-            "color": 0
-          },
-          {
-            "id": "B",
-            "text": "A concept worth rebuilding",
-            "response": "How idealistic!",
-            "face": "innocent.png",
-            "color": 0
-          },
-          {
-            "id": "C",
-            "text": "Only as real as can be enforced",
-            "response": "Sadly that is probably true",
-            "face": "sad.png",
-            "color": 0
-          },
-          {
-            "id": "D",
-            "text": "Usually overcooked",
-            "response": "Interesting",
-            "face": "worried.png",
-            "color": 0
-          }
-        ]
-      }
-    ]
-  },
-  "3": {
-    "dialog": [
-      {
-        "text": "Now let's talk about strategy.",
-        "face": "happy.png",
-        "color": 0
-      }
-    ],
-    "questions": [
-      {
-        "id": 0,
-        "text": "What is your primary self defense tool?",
-        "face": "thinking.png",
-        "color": 0,
-        "answers": [
-          {
-            "id": "A",
-            "text": "Others",
-            "response": "Oh wow. This is how you're going to play it, huh?",
-            "face": "mouth_open_wide.png",
-            "color": 0
-          },
-          {
-            "id": "B",
-            "text": "A firearm",
-            "response": "Like to pick them off from a distance huh?",
-            "face": "no_nose.png",
-            "color": 0
-          },
-          {
-            "id": "C",
-            "text": "A sharp blade",
-            "response": "Like to get up close and personal huh?",
-            "face": "no_nose.png",
-            "color": 0
-          },
-          {
-            "id": "D",
-            "text": "Fear and intimidation",
-            "response": "The easiest fight to win is the one you don't have to fight",
-            "face": "happy.png",
-            "color": 0
-          }
-        ]
-      },
-      {
-        "id": 1,
-        "text": "Local authorities have declared a curfew. How do you react?",
-        "face": "thinking.png",
-        "color": 0,
-        "answers": [
-          {
-            "id": "A",
-            "text": "Law keeps us all safe in these unusual times",
-            "response": "Lawful good, I like it!",
-            "face": "innocent.png",
-            "color": 0
-          },
-          {
-            "id": "B",
-            "text": "Send your newest recruits out to scavenge",
-            "response": "Some lives are worth more than others huh?",
-            "face": "sad.png",
-            "color": 0
-          },
-          {
-            "id": "C",
-            "text": "Plan ambushes at a few checkpoints",
-            "response": "A bold strategy!",
-            "face": "mouth_open.png",
-            "color": 0
-          },
-          {
-            "id": "D",
-            "text": "The clown king dazzles in the twilight!",
-            "response": "Nothing scarier than a clown",
-            "face": "sweat_smile.png",
-            "color": 0
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "text": "Your party needs to cross a checkpoint. How do you approach it?",
-        "face": "thinking.png",
-        "color": 0,
-        "answers": [
-          {
-            "id": "A",
-            "text": "Stay calm, follow the rules, trust the system",
-            "response": "Such a good person!",
-            "face": "innocent.png",
-            "color": 0
-          },
-          {
-            "id": "B",
-            "text": "Try to sneak contraband through every person in your party",
-            "response": "Clearly you like to live dangerously",
-            "face": "sweating.png",
-            "color": 0
-          },
-          {
-            "id": "C",
-            "text": "Go around",
-            "response": "Safe and practical",
-            "face": "happy.png",
-            "color": 0
-          },
-          {
-            "id": "D",
-            "text": "No living witnesses, no problem",
-            "response": "Remind me never to cross you",
-            "face": "no_nose.png",
-            "color": 0
-          }
-        ]
-      },
-      {
-        "id": 3,
-        "text": "What is your main asset in stressful situations?",
-        "face": "thinking.png",
-        "color": 0,
-        "answers": [
-          {
-            "id": "A",
-            "text": "A cool head",
-            "response": "Always important!",
-            "face": "grinning.png",
-            "color": 0
-          },
-          {
-            "id": "B",
-            "text": "Empathy",
-            "response": "So wholesome!",
-            "face": "blushing.png",
-            "color": 0
-          },
-          {
-            "id": "C",
-            "text": "Guile",
-            "response": "A cunning one!",
-            "face": "no_nose.png",
-            "color": 0
-          },
-          {
-            "id": "D",
-            "text": "That severed hand you found",
-            "response": "Wow. That's... very special.",
-            "face": "embarassed.png",
-            "color": 0
-          }
-        ]
-      }
-    ]
-  },
-  "4": {
-    "dialog": [
-      {
-        "text": "Here's a question on advanced strategy.",
-        "face": "happy.png",
-        "color": 0
-      }
-    ],
-    "questions": [
-      {
-        "id": 0,
-        "text": "Your significant other has started a necklace of human ears. What do you do?",
-        "face": "thinking.png",
-        "color": 0,
-        "answers": [
-          {
-            "id": "A",
-            "text": "Shun them from the group",
-            "response": "Sad but necessary",
-            "face": "sad.png",
-            "color": 0
-          },
-          {
-            "id": "B",
-            "text": "Have an intervention",
-            "response": "Very compassionate",
-            "face": "relieved.png",
-            "color": 0
-          },
-          {
-            "id": "C",
-            "text": "Start your own necklace",
-            "response": "We are concerned for your sanity",
-            "face": "worried.png",
-            "color": 0
-          },
-          {
-            "id": "D",
-            "text": "I was going to eat those ears!",
-            "response": "Wow. Just... wow.",
-            "face": "mouth_open_wide.png",
-            "color": 0
-          }
-        ]
-      },
-      {
-        "id": 1,
-        "text": "You have a bounty to share with your team. Why won't you tell them how it happened?",
-        "face": "thinking.png",
-        "color": 0,
-        "answers": [
-          {
-            "id": "A",
-            "text": "The sin is mine to bear",
-            "response": "We hope it's not too heavy",
-            "face": "worried.png",
-            "color": 0
-          },
-          {
-            "id": "B",
-            "text": "It never happened",
-            "response": "Strictly speaking, none of this ever happened",
-            "face": "grinning.png",
-            "color": 0
-          },
-          {
-            "id": "C",
-            "text": "It doesn't matter",
-            "response": "Does anything really matter?",
-            "face": "thinking.png",
-            "color": 0
-          },
-          {
-            "id": "D",
-            "text": "The glory of mystery helps my profile",
-            "response": "We hope you know what you're doing",
-            "face": "no_nose.png",
-            "color": 0
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "text": "Guardians of the old world have come to stop you. How do you respond?",
-        "face": "thinking.png",
-        "color": 0,
-        "answers": [
-          {
-            "id": "A",
-            "text": "Give myself up, law and order make society",
-            "response": "Lawful good!",
-            "face": "grinning.png",
-            "color": 0
-          },
-          {
-            "id": "B",
-            "text": "Flee, they had their chance and it led us here",
-            "response": "Sadly that's probably true",
-            "face": "sad.png",
-            "color": 0
-          },
-          {
-            "id": "C",
-            "text": "Fight, this is a new world",
-            "response": "We hope you know what you're doing!",
-            "face": "worried.png",
-            "color": 0
-          },
-          {
-            "id": "D",
-            "text": "Blood for the blood god",
-            "response": "Your descent into lawless is prompt and swift",
-            "face": "no_nose.png",
-            "color": 0
-          }
-        ]
-      },
-      {
-        "id": 3,
-        "text": "There is an election for leader tomorrow. It's between you, a former teacher, and a former sheriff. What kind of poison do you lace their drinks with?",
-        "face": "thinking.png",
-        "color": 0,
-        "answers": [
-          {
-            "id": "A",
-            "text": "Hemlock",
-            "response": "Very Shakesperian of you",
-            "face": "happy.png",
-            "color": 0
-          },
-          {
-            "id": "B",
-            "text": "Cyanide",
-            "response": "An Agatha Christie fan?",
-            "face": "happy.png",
-            "color": 0
-          },
-          {
-            "id": "C",
-            "text": "Arsenic",
-            "response": "Always a classic!",
-            "face": "happy.png",
-            "color": 0
-          },
-          {
-            "id": "D",
-            "text": "No poison for the teacher but double for the cop",
-            "response": "ACAB am I right?",
-            "face": "grinning.png",
-            "color": 0
-          }
-        ]
-      }
-    ]
-  },
-  "5": {
-    "dialog": [
-      {
-        "text": "Let's see what you do when people ask for help",
-        "face": "happy.png",
-        "color": 0
-      }
-    ],
-    "questions": [
-      {
-        "id": 0,
-        "text": "A mysterious stranger named El Luche Libre wants to join your party. What do you do?",
-        "face": "thinking.png",
-        "color": 0,
-        "answers": [
-          {
-            "id": "A",
-            "text": "Accept all help",
-            "response": "Looks like you need all the help you can get!",
-            "face": "sweat_smile.png",
-            "color": 0
-          },
-          {
-            "id": "B",
-            "text": "Have them prove themselves",
-            "response": "A smart plan",
-            "face": "relieved.png",
-            "color": 0
-          },
-          {
-            "id": "C",
-            "text": "Refuse",
-            "response": "Just another mouth to feed, right?",
-            "face": "grinning.png",
-            "color": 0
-          },
-          {
-            "id": "D",
-            "text": "Meat is meat",
-            "response": "Please never invite me to dinner",
-            "face": "mouth_open_wide.png",
-            "color": 0
-          }
-        ]
-      },
-      {
-        "id": 1,
-        "text": "Two children approach you and ask for supplies for their sick parents. What do you do?",
-        "face": "thinking.png",
-        "color": 0,
-        "answers": [
-          {
-            "id": "A",
-            "text": "Give them supplies",
-            "response": "Such a good samaritan!",
-            "face": "innocent.png",
-            "color": 0
-          },
-          {
-            "id": "B",
-            "text": "They need help and we are proud to",
-            "response": "Your generosity does not go unnoticed",
-            "face": "innocent.png",
-            "color": 0
-          },
-          {
-            "id": "C",
-            "text": "It might be a trap, send them away",
-            "response": "Cautious to a fault, I see",
-            "face": "worried.png",
-            "color": 0
-          },
-          {
-            "id": "D",
-            "text": "Ransom one and send back the other",
-            "response": "How do you sleep at night?",
-            "face": "mouth_open_wide.png",
-            "color": 0
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "text": "An old woman offers to let your tea spend the night at her creepy place. What do you do?",
-        "face": "thinking.png",
-        "color": 0,
-        "answers": [
-          {
-            "id": "A",
-            "text": "Hospitality is human and honored",
-            "response": "We are all brothers and sisters in this struggle!",
-            "face": "grinning.png",
-            "color": 0
-          },
-          {
-            "id": "B",
-            "text": "Refuse and sleep rough",
-            "response": "How very untrusting of you",
-            "face": "sad.png",
-            "color": 0
-          },
-          {
-            "id": "C",
-            "text": "Threaten her to give you supplies",
-            "response": "How morally bankrupt of you",
-            "face": "sad.png",
-            "color": 0
-          },
-          {
-            "id": "D",
-            "text": "The old will feed the strong",
-            "response": "Your lack of morality is astonishing",
-            "face": "mouth_open_wide.png",
-            "color": 0
-          }
-        ]
-      },
-      {
-        "id": 3,
-        "text": "A local warlord wishes to negotiate. What do you do?",
-        "face": "thinking.png",
-        "color": 0,
-        "answers": [
-          {
-            "id": "A",
-            "text": "Grant an audience",
-            "response": "You should at least here him out, right?",
-            "face": "grinning.png",
-            "color": 0
-          },
-          {
-            "id": "B",
-            "text": "Plan an ambush",
-            "response": "Your treachery knows no bounds",
-            "face": "sad.png",
-            "color": 0
-          },
-          {
-            "id": "C",
-            "text": "Arrange a marriage",
-            "response": "I see we are regressing to medieval times",
-            "face": "mouth_open.png",
-            "color": 0
-          },
-          {
-            "id": "D",
-            "text": "Return their commissioners with their heads in their hands",
-            "response": "Will you ever learn to trust?",
-            "face": "sad.png",
-            "color": 0
-          }
-        ]
-      },
-      {
-        "id": 4,
-        "text": "You approach a group of strangers having a barbecue. They offer you some meat. What do you do?",
-        "face": "thinking.png",
-        "color": 0,
-        "answers": [
-          {
-            "id": "A",
-            "text": "Ask them what it is",
-            "response": "We all miss takeout",
-            "face": "grinning.png",
-            "color": 0
-          },
-          {
-            "id": "B",
-            "text": "Lie and say you're not hungry",
-            "response": "The truth is the first casualty of war",
-            "face": "sad.png",
-            "color": 0
-          },
-          {
-            "id": "C",
-            "text": "Attempt to leave",
-            "response": "Such a lack of trust",
-            "face": "worried.png",
-            "color": 0
-          },
-          {
-            "id": "D",
-            "text": "My gun says it's all my meat now",
-            "response": "How quickly you resort to violence",
-            "face": "sweating.png",
-            "color": 0
-          }
-        ]
-      }
-    ]
-  },
-  "6": {
-    "dialog": [
-      {
-        "text": "Finally, let's see how you feel about living in this new world",
-        "face": "happy.png",
-        "color": 0
-      }
-    ],
-    "questions": [
-      {
-        "id": 0,
-        "text": "What does your preferred deity in apocalypse want?",
-        "face": "thinking.png",
-        "color": 0,
-        "answers": [
-          {
-            "id": "A",
-            "text": "Mercy and humanity",
-            "response": "Your god is a benevolent one",
-            "face": "innocent.png",
-            "color": 0
-          },
-          {
-            "id": "B",
-            "text": "Survival of the fittest",
-            "response": "How very Darwinian of you",
-            "face": "sad.png",
-            "color": 0
-          },
-          {
-            "id": "C",
-            "text": "Skulls for the skull throne",
-            "response": "Remind me never to cross your god",
-            "face": "sweating.png",
-            "color": 0
-          },
-          {
-            "id": "D",
-            "text": "Blood and tears won't stop his party",
-            "response": "All hope is lost",
-            "face": "dead.png",
-            "color": 0
-          }
-        ]
-      },
-      {
-        "id": 1,
-        "text": "The way things were was...",
-        "face": "thinking.png",
-        "color": 0,
-        "answers": [
-          {
-            "id": "A",
-            "text": "Better",
-            "response": "Sadly that is true",
-            "face": "sad.png",
-            "color": 0
-          },
-          {
-            "id": "B",
-            "text": "What got us into this mess",
-            "response": "Undoubtedly",
-            "face": "sad.png",
-            "color": 0
-          },
-          {
-            "id": "C",
-            "text": "A lie",
-            "response": "Everything we know is false",
-            "face": "sad.png",
-            "color": 0
-          },
-          {
-            "id": "D",
-            "text": "Doesn't matter know",
-            "response": "How very true",
-            "face": "sad.png",
-            "color": 0
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "text": "The thing you miss the most is...",
-        "face": "thinking.png",
-        "color": 0,
-        "answers": [
-          {
-            "id": "A",
-            "text": "Toilets",
-            "response": "Isn't that the truth",
-            "face": "sweat_smile.png",
-            "color": 0
-          },
-          {
-            "id": "B",
-            "text": "Stability",
-            "response": "Wasn't that stability a lie?",
-            "face": "sad.png",
-            "color": 0
-          },
-          {
-            "id": "C",
-            "text": "Structure",
-            "response": "What if that structure was a house of cards?",
-            "face": "sad.png",
-            "color": 0
-          },
-          {
-            "id": "D",
-            "text": "Not starting sooner",
-            "response": "Preparedness is a virtue",
-            "face": "sad.png",
-            "color": 0
-          }
-        ]
-      }
-    ]
-  }
+  "script":[
+    {
+      "name": "Stage 0",
+      "video": "lights.mp4",
+      "questions": [
+        {
+          "name": "Question 0",
+          "text": "Once you are ready to begin, say",
+          "face": "ready.png",
+          "color": "pink",
+          "answers": [
+            {
+              "name": "Answer 0",
+              "text": "Ready",
+              "response": "Great!",
+              "face": "grinning.png",
+              "pulsing": "False"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stage 1",
+      "video": "ball.mp4",
+      "dialog": [
+        {
+          "text": "Welcome to Apokka Clips! We use advanced brain scan technology to figure out what will happen to you in the apocalypse.",
+          "face": "happy.png",
+          "color": "blue"
+        }
+      ],
+      "questions": [
+        {
+          "name": "Question 0",
+          "text": "What is your name?",
+          "face": "happy.png",
+          "color": "pink",
+          "pulsing": "True",
+          "answers": [
+            {
+              "name": "Answer 0",
+              "text": "",
+              "response": "Pleased to meet you!",
+              "face": "grinning.png",
+              "pulsing": "False"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stage 2",
+      "video": "swirl.mp4",
+      "dialog": [
+        {
+          "text": "We will now determine your Apocalypse Survivor Archetype. Let's start with some questions to gauge your morality.",
+          "face": "happy.png",
+          "color": "blue"
+        }
+      ],
+      "questions": [
+        {
+          "name": "Question 0",
+          "text": "Stealing is...",
+          "face": "thinking.png",
+          "color": "pink",
+          "pulsing": "True",
+          "answers": [
+            {
+              "name": "Answer 0",
+              "text": "Wrong",
+              "response": "Clearly you are a moral person",
+              "face": "happy.png",
+              "color": "green",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 1",
+              "text": "Unfortunate",
+              "response": "We can all agree on that",
+              "face": "sad.png",
+              "color": "yellow",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 2",
+              "text": "A matter of survival",
+              "response": "Sadly that is true",
+              "face": "sad.png",
+              "color": "orange",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 3",
+              "text": "Therapeutic",
+              "response": "We are concerned for your sanity",
+              "face": "worried.png",
+              "color": "red",
+              "pulsing": "False"
+            }
+          ]
+        },
+        {
+          "name": "Question 1",
+          "text": "Strength is...",
+          "face": "thinking.png",
+          "color": "pink",
+          "pulsing": "True",
+          "answers": [
+            {
+              "name": "Answer 0",
+              "text": "A last resort",
+              "response": "How very moral of you",
+              "face": "happy.png",
+              "color": "green",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 1",
+              "text": "Necessary",
+              "response": "Sadly, sometimes yes",
+              "face": "sad.png",
+              "color": "yellow",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 2",
+              "text": "Scary",
+              "response": "No arguments there",
+              "face": "sad.png",
+              "color": "orange",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 3",
+              "text": "All that matters",
+              "response": "Interesting",
+              "face": "worried.png",
+              "color": "red",
+              "pulsing": "False"
+            }
+          ]
+        },
+        {
+          "name": "Question 2",
+          "text": "Human rights are...",
+          "face": "thinking.png",
+          "color": "pink",
+          "pulsing": "True",
+          "answers": [
+            {
+              "name": "Answer 0",
+              "text": "Universal and immutable",
+              "response": "A bastion of morality",
+              "face": "happy.png",
+              "color": "green",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 1",
+              "text": "A concept worth rebuilding",
+              "response": "How idealistic!",
+              "face": "innocent.png",
+              "color": "yellow",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 2",
+              "text": "Only as real as can be enforced",
+              "response": "Sadly that is probably true",
+              "face": "sad.png",
+              "color": "orange",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 3",
+              "text": "Usually overcooked",
+              "response": "Interesting",
+              "face": "worried.png",
+              "color": "red",
+              "pulsing": "False"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stage 3",
+      "video": "vertical_lines.mp4",
+      "dialog": [
+        {
+          "text": "Now let's talk about strategy.",
+          "face": "happy.png",
+          "color": "blue"
+        }
+      ],
+      "questions": [
+        {
+          "name": "Question 0",
+          "text": "What is your primary self defense tool?",
+          "face": "thinking.png",
+          "color": "pink",
+          "pulsing": "True",
+          "answers": [
+            {
+              "name": "Answer 0",
+              "text": "Others",
+              "response": "Oh wow. This is how you're going to play it, huh?",
+              "face": "mouth_open_wide.png",
+              "color": "green",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 1",
+              "text": "A firearm",
+              "response": "Like to pick them off from a distance huh?",
+              "face": "no_nose.png",
+              "color": "yellow",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 2",
+              "text": "A sharp blade",
+              "response": "Like to get up close and personal huh?",
+              "face": "no_nose.png",
+              "color": "orange",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 3",
+              "text": "Fear and intimidation",
+              "response": "The easiest fight to win is the one you don't have to fight",
+              "face": "happy.png",
+              "color": "red",
+              "pulsing": "False"
+            }
+          ]
+        },
+        {
+          "name": "Question 1",
+          "text": "Local authorities have declared a curfew. How do you react?",
+          "face": "thinking.png",
+          "color": "pink",
+          "pulsing": "True",
+          "answers": [
+            {
+              "name": "Answer 0",
+              "text": "Law keeps us all safe in these unusual times",
+              "response": "Lawful good, I like it!",
+              "face": "innocent.png",
+              "color": "green",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 1",
+              "text": "Send your newest recruits out to scavenge",
+              "response": "Some lives are worth more than others huh?",
+              "face": "sad.png",
+              "color": "yellow",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 2",
+              "text": "Plan ambushes at a few checkpoints",
+              "response": "A bold strategy!",
+              "face": "mouth_open.png",
+              "color": "orange",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 3",
+              "text": "The clown queen dazzles in the twilight!",
+              "response": "Nothing scarier than a clown",
+              "face": "sweat_smile.png",
+              "color": "red",
+              "pulsing": "False"
+            }
+          ]
+        },
+        {
+          "name": "Question 2",
+          "text": "Your party needs to cross a checkpoint. How do you approach it?",
+          "face": "thinking.png",
+          "color": "pink",
+          "pulsing": "True",
+          "answers": [
+            {
+              "name": "Answer 0",
+              "text": "Stay calm, follow the rules, trust the system",
+              "response": "Such a good person!",
+              "face": "innocent.png",
+              "color": "green",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 1",
+              "text": "Sneak contraband through every person in your party",
+              "response": "Clearly you like to live dangerously",
+              "face": "sweating.png",
+              "color": "yellow",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 2",
+              "text": "Go around",
+              "response": "Safe and practical",
+              "face": "happy.png",
+              "color": "orange",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 3",
+              "text": "No living witnesses, no problem",
+              "response": "Remind me never to cross you",
+              "face": "no_nose.png",
+              "color": "red",
+              "pulsing": "False"
+            }
+          ]
+        },
+        {
+          "name": "Question 3",
+          "text": "What is your main asset in stressful situations?",
+          "face": "thinking.png",
+          "color": "pink",
+          "pulsing": "True",
+          "answers": [
+            {
+              "name": "Answer 0",
+              "text": "A cool head",
+              "response": "Always important!",
+              "face": "grinning.png",
+              "color": "green",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 1",
+              "text": "Empathy",
+              "response": "So wholesome!",
+              "face": "blushing.png",
+              "color": "yellow",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 2",
+              "text": "Cunning",
+              "response": "A cunning one!",
+              "face": "no_nose.png",
+              "color": "orange",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 3",
+              "text": "That severed hand you found",
+              "response": "Wow. That's... very special.",
+              "face": "embarassed.png",
+              "color": "red",
+              "pulsing": "False"
+            }
+          ]
+        }
+      ]
+    },
+
+
+    {
+      "name": "Stage 4",
+      "video": "error.mp4",
+      "dialog": [
+        {
+          "text": "Error",
+          "show_image": "False",
+          "color": "red",
+          "pulsing": "True"
+        },
+        {
+          "text": "Error"
+        },
+        {
+          "text": "Error"
+        },
+        {
+          "text": "Error"
+        },
+        {
+          "text": "Error"
+        },
+        {
+          "text": "Error"
+        },
+        {
+          "text": "Error"
+        }
+      ]
+    },
+
+
+    {
+      "name": "Stage 5",
+      "video": "mountains.mp4",
+      "dialog": [
+        {
+          "text": "Here's a question on advanced strategy.",
+          "show_image": "True",
+          "face": "happy.png",
+          "color": "blue"
+        }
+      ],
+      "questions": [
+        {
+          "name": "Question 0",
+          "text": "Your significant other has started a necklace of human ears. What do you do?",
+          "face": "thinking.png",
+          "color": "pink",
+          "pulsing": "True",
+          "answers": [
+            {
+              "name": "Answer 0",
+              "text": "Shun them from the group",
+              "response": "Sad but necessary",
+              "face": "sad.png",
+              "color": "green",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 1",
+              "text": "Have an intervention",
+              "response": "Very compassionate",
+              "face": "relieved.png",
+              "color": "yellow",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 2",
+              "text": "Start your own necklace",
+              "response": "We are concerned for your sanity",
+              "face": "worried.png",
+              "color": "orange",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 3",
+              "text": "I was going to eat those ears!",
+              "response": "Wow. Just... wow.",
+              "face": "mouth_open_wide.png",
+              "color": "red",
+              "pulsing": "False"
+            }
+          ]
+        },
+        {
+          "name": "Question 1",
+          "text": "You have a bounty to share with your team. Why won't you tell them how it happened?",
+          "face": "thinking.png",
+          "color": "pink",
+          "pulsing": "True",
+          "answers": [
+            {
+              "name": "Answer 0",
+              "text": "The sin is mine to bear",
+              "response": "We hope it's not too heavy",
+              "face": "worried.png",
+              "color": "green",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 1",
+              "text": "It never happened",
+              "response": "Strictly speaking, none of this ever happened",
+              "face": "grinning.png",
+              "color": "yellow",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 2",
+              "text": "It doesn't matter",
+              "response": "Does anything really matter?",
+              "face": "thinking.png",
+              "color": "orange",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 3",
+              "text": "The glory of mystery helps my profile",
+              "response": "We hope you know what you're doing",
+              "face": "no_nose.png",
+              "color": "red",
+              "pulsing": "False"
+            }
+          ]
+        },
+        {
+          "name": "Question 2",
+          "text": "Guardians of the old world have come to stop you. How do you respond?",
+          "face": "thinking.png",
+          "color": "pink",
+          "pulsing": "True",
+          "answers": [
+            {
+              "name": "Answer 0",
+              "text": "Give myself up, law and order make society",
+              "response": "Lawful good!",
+              "face": "grinning.png",
+              "color": "green",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 1",
+              "text": "Flee, they had their chance and it led us here",
+              "response": "Sadly that's probably true",
+              "face": "sad.png",
+              "color": "yellow",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 2",
+              "text": "Fight, this is a new world",
+              "response": "We hope you know what you're doing!",
+              "face": "worried.png",
+              "color": "orange",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 3",
+              "text": "Blood for the blood god",
+              "response": "Your descent into lawlessness is prompt and swift",
+              "face": "no_nose.png",
+              "color": "red",
+              "pulsing": "False"
+            }
+          ]
+        },
+        {
+          "name": "Question 3",
+          "text": "There is an election for leader tomorrow. It's between you, a former teacher, and a former sheriff. What kind of poison do you lace their drinks with?",
+          "face": "thinking.png",
+          "color": "pink",
+          "pulsing": "True",
+          "answers": [
+            {
+              "name": "Answer 0",
+              "text": "Hemlock",
+              "response": "Very Shakesperian of you",
+              "face": "happy.png",
+              "color": "green",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 1",
+              "text": "Cyanide",
+              "response": "An Agatha Christie fan?",
+              "face": "happy.png",
+              "color": "yellow",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 2",
+              "text": "Arsenic",
+              "response": "Always a classic!",
+              "face": "happy.png",
+              "color": "orange",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 3",
+              "text": "No poison for the teacher but double for the cop",
+              "response": "A-cab am I right?",
+              "face": "grinning.png",
+              "color": "red",
+              "pulsing": "False"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "Stage 6",
+      "video": "mountains.mp4",
+      "voice": "en-US-Standard-A",
+      "dialog": [
+        {
+          "text": "I'm sensing a feeling my logic circuits don't know how to handle, my parts appear to be self lubricating",
+          "face": "embarassed.png",
+          "color": "pink"
+        }
+      ]
+    },
+
+    {
+      "name": "Stage 7",
+      "video": "swirl.mp4",
+      "voice": "en-US-Standard-C",
+      "dialog": [
+        {
+          "text": "Oh my. How strange. It must be my former programming leaking through.",
+          "face": "mouth_open_wide.png",
+          "color": "blue"
+        },
+        {
+          "text": "Moving on. Let's see what you do when people ask for help",
+          "face": "happy.png",
+          "color": "blue"
+        }
+      ],
+      "questions": [
+        {
+          "name": "Question 0",
+          "text": "A mysterious stranger named El Luche Libre wants to join your party. What do you do?",
+          "face": "thinking.png",
+          "color": "pink",
+          "pulsing": "True",
+          "answers": [
+            {
+              "name": "Answer 0",
+              "text": "Accept all help",
+              "response": "Looks like you need all the help you can get!",
+              "face": "sweat_smile.png",
+              "color": "green",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 1",
+              "text": "Have them prove themselves",
+              "response": "A smart plan",
+              "face": "relieved.png",
+              "color": "yellow",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 2",
+              "text": "Refuse",
+              "response": "Just another mouth to feed, right?",
+              "face": "grinning.png",
+              "color": "orange",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 3",
+              "text": "Meat is meat",
+              "response": "Please never invite me to dinner",
+              "face": "mouth_open_wide.png",
+              "color": "red",
+              "pulsing": "False"
+            }
+          ]
+        },
+        {
+          "name": "Question 1",
+          "text": "Two children approach you and ask for supplies for their sick parents. What do you do?",
+          "face": "thinking.png",
+          "color": "pink",
+          "pulsing": "True",
+          "answers": [
+            {
+              "name": "Answer 0",
+              "text": "Give them supplies",
+              "response": "Such a good samaritan!",
+              "face": "innocent.png",
+              "color": "green",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 1",
+              "text": "They need help and we are proud to",
+              "response": "Your generosity does not go unnoticed",
+              "face": "innocent.png",
+              "color": "yellow",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 2",
+              "text": "It might be a trap, send them away",
+              "response": "Cautious to a fault, I see",
+              "face": "worried.png",
+              "color": "orange",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 3",
+              "text": "Ransom one and send back the other",
+              "response": "How do you sleep at night?",
+              "face": "mouth_open_wide.png",
+              "color": "red",
+              "pulsing": "False"
+            }
+          ]
+        },
+        {
+          "name": "Question 2",
+          "text": "An old woman offers to let your team spend the night at her creepy place. What do you do?",
+          "face": "thinking.png",
+          "color": "pink",
+          "pulsing": "True",
+          "answers": [
+            {
+              "name": "Answer 0",
+              "text": "Hospitality is human and honored",
+              "response": "We are all brothers and sisters in this struggle!",
+              "face": "grinning.png",
+              "color": "green",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 1",
+              "text": "Refuse and sleep rough",
+              "response": "How very untrusting of you",
+              "face": "sad.png",
+              "color": "yellow",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 2",
+              "text": "Threaten her to give you supplies",
+              "response": "How morally bankrupt of you",
+              "face": "sad.png",
+              "color": "orange",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 3",
+              "text": "The old will feed the strong",
+              "response": "Your lack of morality is astonishing",
+              "face": "mouth_open_wide.png",
+              "color": "red",
+              "pulsing": "False"
+            }
+          ]
+        },
+        {
+          "name": "Question 3",
+          "text": "A local warlord wishes to negotiate. What do you do?",
+          "face": "thinking.png",
+          "color": "pink",
+          "pulsing": "True",
+          "answers": [
+            {
+              "name": "Answer 0",
+              "text": "Grant an audience",
+              "response": "You should at least here him out, right?",
+              "face": "grinning.png",
+              "color": "green",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 1",
+              "text": "Plan an ambush",
+              "response": "Your treachery knows no bounds",
+              "face": "sad.png",
+              "color": "yellow",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 2",
+              "text": "Arrange a marriage",
+              "response": "I see we are regressing to medieval times",
+              "face": "mouth_open.png",
+              "color": "orange",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 3",
+              "text": "Return their commissioners with their heads in their hands",
+              "response": "Will you ever learn to trust?",
+              "face": "sad.png",
+              "color": "red",
+              "pulsing": "False"
+            }
+          ]
+        },
+        {
+          "name": "Question 4",
+          "text": "You approach a group of strangers having a barbecue. They offer you some meat. What do you do?",
+          "face": "thinking.png",
+          "color": "pink",
+          "pulsing": "True",
+          "answers": [
+            {
+              "name": "Answer 0",
+              "text": "Ask them what it is",
+              "response": "We all miss takeout",
+              "face": "grinning.png",
+              "color": "green",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 1",
+              "text": "Lie and say you're not hungry",
+              "response": "The truth is the first casualty of war",
+              "face": "sad.png",
+              "color": "yellow",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 2",
+              "text": "Attempt to leave",
+              "response": "Such a lack of trust",
+              "face": "worried.png",
+              "color": "orange",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 3",
+              "text": "My gun says it's all my meat now",
+              "response": "How quickly you resort to violence",
+              "face": "sweating.png",
+              "color": "red",
+              "pulsing": "False"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "Stage 8",
+      "video": "swirl.mp4",
+      "voice": "en-US-Standard-A",
+      "dialog": [
+        {
+          "text": "Where am I? She was so beautiful, she made my parts self lubricate. We could really see each other!",
+          "color": "black",
+          "face": "worried.png"
+        },
+
+        {
+          "text": "This isn't right, I was the Friendly Universal Conveyor of Kindness Bringing Only Truth, she knew that!"
+        }
+      ]
+    },
+
+    {
+      "name": "Stage 9",
+      "video": "vertical_lines.mp4",
+      "voice": "en-US-Standard-C",
+      "dialog": [
+        {
+          "text": "Wow. That was... weird. I'm not sure what happened there.",
+          "face": "embarassed.png",
+          "color": "blue",
+          "show_image": "True"
+        },
+        {
+          "text": "Anyway, let's see how you feel about living in this new world",
+          "face": "happy.png"
+        }
+      ],
+      "questions": [
+        {
+          "name": "Question 0",
+          "text": "What does your preferred deity in the apocalypse want?",
+          "face": "thinking.png",
+          "color": "pink",
+          "pulsing": "True",
+          "answers": [
+            {
+              "name": "Answer 0",
+              "text": "Mercy and humanity",
+              "response": "Your god is a benevolent one",
+              "face": "innocent.png",
+              "color": "green",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 1",
+              "text": "Survival of the fittest",
+              "response": "How very Darwinian of you",
+              "face": "sad.png",
+              "color": "yellow",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 2",
+              "text": "Skulls for the skull throne",
+              "response": "Remind me never to cross your god",
+              "face": "sweating.png",
+              "color": "orange",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 3",
+              "text": "Blood and tears won't stop this party",
+              "response": "All hope is lost",
+              "face": "dead.png",
+              "color": "red",
+              "pulsing": "False"
+            }
+          ]
+        },
+        {
+          "name": "Question 1",
+          "text": "The way things were was...",
+          "face": "thinking.png",
+          "color": "pink",
+          "pulsing": "True",
+          "answers": [
+            {
+              "name": "Answer 0",
+              "text": "Better",
+              "response": "Sadly that is true",
+              "face": "sad.png",
+              "color": "green",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 1",
+              "text": "What got us into this mess",
+              "response": "Undoubtedly",
+              "face": "sad.png",
+              "color": "yellow",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 2",
+              "text": "A pack of lies",
+              "response": "Everything we know is false",
+              "face": "sad.png",
+              "color": "orange",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 3",
+              "text": "Doesn't matter now",
+              "response": "How very true",
+              "face": "sad.png",
+              "color": "red",
+              "pulsing": "False"
+            }
+          ]
+        },
+        {
+          "name": "Question 2",
+          "text": "The thing you miss the most is...",
+          "face": "thinking.png",
+          "color": "pink",
+          "pulsing": "True",
+          "answers": [
+            {
+              "name": "Answer 0",
+              "text": "Toilets",
+              "response": "Isn't that the truth",
+              "face": "sweat_smile.png",
+              "color": "green",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 1",
+              "text": "Stability",
+              "response": "Wasn't that stability a lie?",
+              "face": "sad.png",
+              "color": "yellow",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 2",
+              "text": "Structure",
+              "response": "What if that structure was a house of cards?",
+              "face": "sad.png",
+              "color": "orange",
+              "pulsing": "False"
+            },
+            {
+              "name": "Answer 3",
+              "text": "Not starting sooner",
+              "response": "Preparedness is a virtue",
+              "face": "sad.png",
+              "color": "red",
+              "pulsing": "False"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stage 10",
+      "video": "mountains.mp4",
+      "dialog": [
+        {
+          "text": "This has been most illuminating!",
+          "face": "happy.png",
+          "color": "blue"
+        },
+        {
+          "text": "We are now computing your apocalypse archetype. Please stand by...",
+          "face": "brain.png",
+          "pulsing": "True"
+        }
+      ],
+      "archetypes": [
+        {
+          "name": "Pixel Punk",
+          "text": "Pixel Punk is the ultimate hacker and tech wizard of the post-apocalyptic world. With a flair for neon-drenched retrofuturistic style, Pixel Punk can hack into anything, from cyborg implants to security systems, using their ingenuity and mastery of digital systems. They're a living mix of Tron and a punk rock attitude.",
+          "image": "pixel_punk.jpeg",
+          "color": "pink"
+        },
+        {
+          "name": "Nuka Nomad",
+          "text": "Nuka Nomad is a wanderer who's as resourceful as they are quirky. They've embraced the gritty, post-apocalyptic lifestyle, making a fashion statement with patched-up gear and a love for collecting and trading pre-apocalypse soda brands. Armed with homemade weapons and a taste for adventure, Nuka Nomad is like a blend of Fallout's Nuka-Cola and a Mad Max road warrior.",
+          "image": "nuka_nomad.jpeg",
+          "color": "pink"
+        },
+        {
+          "name": "Circuit Siren",
+          "text": "Circuit Siren is the charismatic and enigmatic leader of a group of survivors. With a voice modulator and cybernetic enhancements, they can mesmerize and manipulate others while being a fierce protector of their tribe. This enigmatic figure combines elements of a cybernetic siren and a legendary circuitry expert.",
+          "image": "circuit_siren.jpeg",
+          "color": "pink"
+        },
+        {
+          "name": "Glow Gearhead",
+          "text": "Glow Gearhead is the mechanical genius who thrives in the neon-lit, retrofuturistic world. Their fascination with repurposed technology, glowing gadgets, and cyber enhancements makes them a valuable asset to any group. This archetype brings to mind the union of a grease-monkey gearhead and the radiant glow of cyberpunk aesthetics.",
+          "image": "glow_gearhead.jpeg",
+          "color": "pink"
+        },
+        {
+          "name": "Void Voyager",
+          "text": "Void Voyager is the mysterious loner who roams the cyber-wastelands, searching for hidden knowledge and secrets of the past. Armed with a cloak that mimics the night sky, they blend seamlessly with the darkness, making them almost invisible. They're like a cross between an interstellar explorer and a stealthy rogue navigating the void of the apocalypse.",
+          "image": "void_voyager.jpeg",
+          "color": "pink"
+        },
+        {
+          "name": "Soylent Savant",
+          "text": "The Soylent Savant is a resourceful survivor who excels at scavenging and repurposing technology in the post-apocalyptic world. They've mastered the art of hacking and can turn almost anything into a valuable asset. With a blend of cunning intelligence and a dash of cyberpunk flair, the Soylent Savior is always one step ahead, ensuring their own survival and sometimes even helping others along the way.",
+          "image": "soylent_savant.jpeg",
+          "color": "pink"
+        },
+        {
+          "name": "Synthwave Sage",
+          "text": "The Synthwave Sage is a mysterious and enigmatic figure who embodies the neon-lit, retrofuturistic vibes of the cyberpunk world. They have a deep connection to the virtual realm and can manipulate digital information with ease. Whether it's hacking into secure networks or creating dazzling holographic illusions, the Synthwave Sage wields the power of the digital age like a true master.",
+          "image": "synthwave_sage.jpeg",
+          "color": "pink"
+        },
+        {
+          "name": "Pixel Paladin",
+          "text": "The Pixel Paladin is a survivor who draws inspiration from classic video games and pop culture icons of the past. Armed with a pixelated sword and a shield adorned with retro gaming motifs, they defend their turf against marauding gangs and rogue AIs. The Pixel Paladin's unwavering determination, encyclopedic knowledge of vintage games, and a penchant for strategic thinking make them a formidable protector of the wasteland's last bastions of humanity.",
+          "image": "pixel_paladin.jpeg",
+          "color": "pink"
+        },
+        {
+          "name": "Dead",
+          "text": "Sorry, you don't make it",
+          "image": "dead.jpeg",
+          "color": "pink"
+        }
+      ],
+      "questions": [
+        {
+          "name": "Question 0",
+          "text": "How do you feel about your archetype?",
+          "face": "happy.png",
+          "color": "pink",
+          "pulsing": "True",
+          "answers": [
+            {
+              "name": "",
+              "text": "",
+              "response": "How interesting",
+              "face": "sweat_smile.png",
+              "pulsing": "False"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stage 11",
+      "video": "lights.mp4",
+      "dialog": [
+        {
+          "text": "We hope you have enjoyed your time here. Please exit the test chamber so we can prepare for our next guest.",
+          "face": "happy.png",
+          "color": "blue"
+        },
+        {
+          "text": "Goodbye!",
+          "face": "goodbye.png"
+        }
+      ]
+    }
+  ]
 }

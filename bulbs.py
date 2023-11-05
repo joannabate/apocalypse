@@ -1,51 +1,62 @@
 import time
+import math
 from platypush.context import get_plugin
+import helpers
 
 N_BULBS = 6
 
 class Bulbs:
     def __init__(self):
-        self.colors = self.build_colors()
-        
-    def build_colors(self):
-        colors = {}
-        colors[0] = {'x':0.1, 'y':0.25} #blue
-        colors[1] = {'x':0.7539, 'y':0.2746} #red
-        colors[2] = {'x':0.0771, 'y':0.8268} #green
-        colors[3] = {'x':0.3127, 'y':0.329} #white
-        return colors
+        self.colors, self.color_list = helpers.build_colors()
+        self.script = helpers.build_script()
 
-    def update_bulbs(self, color=None, brightness=None):
+    def update_bulbs(self, color_xy=None, brightness=None):
         # Update bulbs
         for s in range(N_BULBS):
             bulb_name = 'Bulb ' + str(s+1)
             try:
-                if color:
-                    get_plugin('zigbee.mqtt').device_set(device=bulb_name, property='color', value=color)
-                if brightness:
+                if color_xy:
+                    get_plugin('zigbee.mqtt').device_set(device=bulb_name, property='color', value=color_xy)
+                if brightness is not None:
                     get_plugin('zigbee.mqtt').device_set(device=bulb_name, property='brightness', value=brightness)
             except:
                 print(bulb_name + ' failed to update')
                 continue
 
-    def run(self, color_id):
+    def run(self, color_id, pulsing, sensor_flag):
         c_id = -1
-
-        # Set bulbs to full brightness
-        self.update_bulbs(brightness=127)
+        s_flag = sensor_flag.value
 
         while True:
-            if color_id.value != c_id: # emotion has changed
-                color = self.colors[color_id.value]
-                self.update_bulbs(color=color)
-                c_id = color_id.value 
-            time.sleep(0.1)
+            # If someone is sitting down, do normal light logic
+            if sensor_flag.value:
+                if color_id.value != c_id or sensor_flag.value != s_flag:
+                    color_name = self.color_list[color_id.value]
+
+                    if color_name == "black":
+                        self.update_bulbs(brightness=0)
+                    else:
+                        self.update_bulbs(brightness=254)
+
+                        color_xy = self.colors[color_name]
+                        self.update_bulbs(color_xy=color_xy)
+
+                    c_id = color_id.value 
+                    s_flag = sensor_flag.value 
+
+                if pulsing.value:
+                    brightness = int(254 * (1 + math.sin(2 * math.pi * (time.time() % 5)/5))/2)
+                    self.update_bulbs(brightness=brightness)
+
+            # If no-one is sitting down, ignore light logic and set white light
+            else:
+                if sensor_flag.value != s_flag:
+                    self.update_bulbs(brightness=254)
+                    color_xy = self.colors['white']
+                    self.update_bulbs(color_xy=color_xy)
+                    s_flag = sensor_flag.value
+
+            time.sleep(0.2)
 
 if __name__ == '__main__':
     my_bulbs = Bulbs()
-    # get_plugin('zigbee.mqtt').device_set(device='Bulb 1', property='brightness', value=127)
-    # get_plugin('zigbee.mqtt').device_set(device='Bulb 1', property='color', value={'x':0.7539, 'y':0.2746})
-    for color_id in range(4):
-        color = my_bulbs.colors[color_id]
-        my_bulbs.update_bulbs(color=color)
-        time.sleep(1)

@@ -1,32 +1,20 @@
-import sounddevice as sd
-import json
-import sys
-import numbers
 import speech_recognition as sr
 from google.cloud import texttospeech
 from playsound import playsound
-from os import listdir
-from os.path import isfile, join
 import random
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
-
+import time
+import helpers
 import os
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="apocalypse-roomservice-6bebad941d3f.json"
 
 
 class SpeechEngine:
    def __init__(self):
-      self.is_speaking = False
       self.client = texttospeech.TextToSpeechClient()
 
-      # Note: the voice can also be specified by name.
-      # Names of voices can be retrieved with client.list_voices().
-      self.voice = texttospeech.VoiceSelectionParams(
-         language_code="en-US",
-         name="en-US-Standard-C",
-         ssml_gender=texttospeech.SsmlVoiceGender.FEMALE,
-      )
+      self.voice_name = "en-US-Standard-C"
 
       self.audio_config = texttospeech.AudioConfig(
          audio_encoding=texttospeech.AudioEncoding.MP3
@@ -35,17 +23,22 @@ class SpeechEngine:
    def respond(self, text):
       
       if len(text):
-        self.speaking_text = text
-        self.is_speaking = True
-
         """Synthesizes speech from the input string of text."""
 
         print("AI --> [", text, "]")
 
         input_text = texttospeech.SynthesisInput(text=text)
 
+        # Note: the voice can also be specified by name.
+        # Names of voices can be retrieved with client.list_voices().
+        voice = texttospeech.VoiceSelectionParams(
+            language_code=self.voice_name[:-4] ,
+            name=self.voice_name,
+            # ssml_gender=texttospeech.SsmlVoiceGender.FEMALE,
+        )
+
         response = self.client.synthesize_speech(
-            request={"input": input_text, "voice": self.voice, "audio_config": self.audio_config}
+            request={"input": input_text, "voice": voice, "audio_config": self.audio_config}
         )
 
         # The response's audio_content is binary.
@@ -56,126 +49,187 @@ class SpeechEngine:
        
 
 class AI:
-    def __init__(self, faces, videos):
+    def __init__(self):
         
-        self.faces = faces
-        self.videos = videos
+        self.colors, self.color_list = helpers.build_colors()
+        self.faces = helpers.build_faces()
+        self.videos = helpers.build_videos()
+        self.script = helpers.build_script()
+        self.archetypes = helpers.build_archetypes()
+
+        self.num_stages = len(self.script)
 
         self.speech_engine = SpeechEngine()
         
-        with open('script.json') as json_file:
-            self.script = {int(k):v for k,v in json.load(json_file).items()}
-        
-        self.repeat_question_text = "I'm sorry, I didn't understand that. Can you try again?"
-        self.number_list = ['one', 'two', 'three', 'four', 'five', 'six']
+        self.repeat_text = "Please try again"
 
-        self.is_question = False
-
-    def run(self, color_id, face_id, stage_id):
+    def run(self, color_id, face_id, stage_id, question_id, question, answer_id, answered, archetype_id, archetype, pulsing, sensor_flag, show_image, video_id):
         input_text = None
         
         r = sr.Recognizer()
+        m = sr.Microphone()
+        with m as source:
+            r.adjust_for_ambient_noise(source)  # we only need to calibrate once, before we start listening
 
         while True:
-
-            with sr.Microphone() as source:
+            with m as source:
                 print("Say something!")
                 audio = r.listen(source)
 
-            # recognize speech using Google Speech Recognition
-            try:
-                # for testing purposes, we're just using the default API key
-                # to use another API key, use `r.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
-                # instead of `r.recognize_google(audio)`
-                input_text = r.recognize_google(audio)
-                print("me --> [", input_text, "]")
-            except sr.UnknownValueError:
-                print("Google Speech Recognition could not understand audio")
-            except sr.RequestError as e:
-                print("Could not request results from Google Speech Recognition service; {0}".format(e))
-
-            if input_text:
-                if input_text == 'reboot':
-                    stage_id.value = 0
-                    self.speech_engine.respond("Rebooting")
-                    face_id.value = self.faces.index('happy.png')
-                    
-                elif 'go to stage' in input_text:
-                    for number in self.number_list:
-                        if number in input_text:
-                            n = self.number_list.index(number) + 1
-                            stage_id.value = n
-                            print('going to stage ' + str(n))
-                            self.speak_dialog(color_id, face_id, stage_id)
-                            break
-                            
-                else: #We have any other sort of text
-                    self.process_text(input_text, color_id, face_id, stage_id)
+            if sensor_flag.value:
+                # recognize speech using Google Speech Recognition
+                try:
+                    # for testing purposes, we're just using the default API key
+                    # to use another API key, use `r.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
+                    # instead of `r.recognize_google(audio)`
+                    input_text = r.recognize_google(audio)
+                    print("me --> [", input_text, "]")
+                    self.process_text(input_text, color_id, face_id, stage_id, question_id, question, answer_id, answered, archetype_id, archetype, pulsing, show_image, video_id)
+                except sr.UnknownValueError:
+                    print("Google Speech Recognition could not understand audio")
+                except sr.RequestError as e:
+                    print("Could not request results from Google Speech Recognition service; {0}".format(e))
+            else:
+                print("Ignoring audio")
 
             input_text = None
 
-    def process_text(self, input_text, color_id, face_id, stage_id):
-        #First run through
-        if stage_id.value == 0:
-            stage_id.value = 1
-        if self.is_question:
+    def process_text(self, input_text, color_id, face_id, stage_id, question_id, question, answer_id, answered, archetype_id, archetype, pulsing, show_image, video_id):
+        if question.value:
             # Pull question
-            for q in self.stage['questions']:
-                if q["id"] == self.question_id:
-                    question = q
-                    break
+            question_dict = self.stage['questions'][question_id.value]
 
-            stop_words = set(stopwords.words('english'))
-            input_tokens = word_tokenize(input_text)
-            input_filtered = [w for w in input_tokens if not w.lower() in stop_words]
+            # If we have more than one answer, find closest match
+            # if len(question_dict['answers']) > 1:
+
+            # stop_words = set(stopwords.words('english'))
+            input_tokens = word_tokenize(input_text.lower())
+            # input_filtered = [w for w in input_tokens if not w.lower() in stop_words]
+            input_filtered = input_tokens
 
             answer_common_words = []
             # Loop through answers and get number of common words
-            for answer in question['answers']:
-                answer_tokens = word_tokenize(answer['text'])
-                answer_filtered = [w for w in answer_tokens if not w.lower() in stop_words]
+            for answer in question_dict['answers']:
+                answer_tokens = word_tokenize(answer['text'].lower())
+                # answer_filtered = [w for w in answer_tokens if not w.lower() in stop_words]
+                answer_filtered = answer_tokens
 
                 common_words = list(set(input_filtered).intersection(answer_filtered))
                 answer_common_words.append(len(common_words))
 
-            # Find winner
-            answer_position = answer_common_words.index(max(answer_common_words))
-            answer = question['answers'][answer_position]
+            # If we have no matching words and we're not ignoring the response:
+            if (max(answer_common_words) == 0) and (stage_id.value not in (1,10)):
+                self.speech_engine.respond(self.repeat_text)
+                return
 
-            # Say response for answer
-            color_id.value = answer['color']
-            face_id.value = self.faces.index(answer['face'])
-            self.speech_engine.respond(answer['response'])
+            else:
+                # Find winner
+                answered.value = True
+                answer_id.value = answer_common_words.index(max(answer_common_words))
+                answer = question_dict['answers'][answer_id.value]
 
-            # go to next stage
-            stage_id.value = stage_id.value + 1
-            self.is_question = False
+                # Update variables but don't say anything
+                self.update_variables(answer, color_id, face_id, pulsing, show_image, text=False, response=False)
 
-            self.speak_dialog(color_id, face_id, stage_id)
+                if stage_id.value > 1:
+                    # Pause a moment
+                    print('sleeping...')
+                    time.sleep(2)
+
+            question.value = False
+            answered.value = False
+
+            # Update variables and say response
+            self.update_variables(answer, color_id, face_id, pulsing, show_image, text=False, response=True)
+
+            # go to next stage, or back to start
+            if stage_id.value == self.num_stages-1:
+                print("sleeping...")
+                time.sleep(30)
+                stage_id.value = 0
+            else:
+                stage_id.value = stage_id.value + 1
+
+            self.speak_dialog(color_id, face_id, stage_id, question_id, question, answer_id, answered, archetype_id, archetype, pulsing, show_image, video_id)
 
         else:
-            self.speak_dialog(color_id, face_id, stage_id)
+            self.speak_dialog(color_id, face_id, stage_id, question_id, question, answer_id, answered, archetype_id, archetype, pulsing, show_image, video_id)
     
-    def speak_dialog(self, color_id, face_id, stage_id):
+    def speak_dialog(self, color_id, face_id, stage_id, question_id, question, answer_id, answered, archetype_id, archetype, pulsing, show_image, video_id):
         print("Speaking dialog for stage " + str(stage_id.value))
+
         #Pull new stage
         self.stage = self.script[stage_id.value]
+        if 'voice' in self.stage:
+            self.speech_engine.voice_name = self.stage['voice']
 
-        #Loop through dialog
-        for line in self.stage['dialog']:
-            color_id.value = line['color']
-            face_id.value = self.faces.index(line['face'])
-            self.speech_engine.respond(line['text'])
+        if 'video' in self.stage:
+            video_id.value = self.videos.index(self.stage['video'])
 
+        if 'dialog' in self.stage:
+            #Loop through dialog
+            for line in self.stage['dialog']:
+                self.update_variables(line, color_id, face_id, pulsing, show_image)
+
+        # Select an archetype at random
+        if 'archetypes' in self.stage:
+            print("sleeping...")
+            time.sleep(5)
+
+            face_id.value = self.faces.index('happy.png')
+            self.speech_engine.respond('Got it!')
+            self.speech_engine.respond('You are...')
+
+            archetype_id.value = random.randint(0, len(self.stage['archetypes'])-1)
+            archetype_dict = self.stage['archetypes'][archetype_id.value]
+            archetype.value = True
+
+            self.speech_engine.respond(archetype_dict['name'])
+            self.speech_engine.respond(archetype_dict['text'])
+            archetype.value = False
+        
         # Select a question at random
-        question = random.choice(self.stage['questions'])
-        self.is_question = True
-        self.question_id = question['id']
-        color_id.value = question['color']
-        face_id.value = self.faces.index(line['face'])
-        self.speech_engine.respond(question['text'])
+        if 'questions' in self.stage:
+            question_id.value = random.randint(0, len(self.stage['questions'])-1)
+            question_dict = self.stage['questions'][question_id.value]
+            self.update_variables(question_dict, color_id, face_id, pulsing, show_image)
 
-        for answer in question['answers']:
-            print(answer)
-            self.speech_engine.respond(str(answer['id']))
-            self.speech_engine.respond(answer['text'])
+            # We are now starting a question
+            question.value = True
+
+            for a, answer in enumerate(question_dict['answers']):
+                if a == 3:
+                    self.speech_engine.respond('or')
+                answer_id.value = a
+                self.speech_engine.respond(answer['text'])
+
+        else:
+            # go to next stage, or back to start
+            if stage_id.value == self.num_stages-1:
+                print("sleeping...")
+                time.sleep(30)
+                stage_id.value = 0
+            else:
+                stage_id.value = stage_id.value + 1
+                
+            self.speak_dialog(color_id, face_id, stage_id, question_id, question, answer_id, answered, archetype_id, archetype, pulsing, show_image, video_id)
+
+
+    def update_variables(self, dictionary, color_id, face_id, pulsing, show_image, text=True, response=False):
+        if 'color' in dictionary:
+            color_id.value = self.color_list.index(dictionary['color'])
+
+        if 'show_image' in dictionary:
+            show_image.value = False if dictionary['show_image'] == 'False' else True
+
+        if 'face' in dictionary:
+            face_id.value = self.faces.index(dictionary['face'])
+
+        if text and ('text' in dictionary):
+            self.speech_engine.respond(dictionary['text'])
+
+        if response and ('response' in dictionary):
+            self.speech_engine.respond(dictionary['response'])
+
+        if 'pulsing' in dictionary:
+            pulsing.value = False if dictionary['pulsing'] == 'False' else True
