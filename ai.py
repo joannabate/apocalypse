@@ -7,6 +7,8 @@ from nltk.tokenize import word_tokenize
 import time
 import helpers
 import os
+from wrapper import RedisWrapper
+
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="apocalypse-roomservice-6bebad941d3f.json"
 
 
@@ -49,7 +51,7 @@ class SpeechEngine:
        
 
 class AI:
-    def __init__(self):
+    def __init__(self, use_redis=False):
         
         self.colors, self.color_list = helpers.build_colors()
         self.faces = helpers.build_faces()
@@ -57,11 +59,15 @@ class AI:
         self.script = helpers.build_script()
         self.archetypes = helpers.build_archetypes()
 
+        self.ignore_answer = False
         self.num_stages = len(self.script)
-
         self.speech_engine = SpeechEngine()
-        
         self.repeat_text = "Please try again"
+        self.score = 0
+
+        self.use_redis = use_redis
+        if use_redis:
+            self.r = RedisWrapper()
 
     def run(self, color_id, face_id, stage_id, question_id, question, answer_id, answered, archetype_id, archetype, pulsing, sensor_flag, show_image, video_id):
         input_text = None
@@ -74,7 +80,7 @@ class AI:
         while True:
             with m as source:
                 print("Say something!")
-                audio = r.listen(source)
+                audio = r.listen(source, 10, 3)
 
             if sensor_flag.value:
                 # recognize speech using Google Speech Recognition
@@ -86,9 +92,16 @@ class AI:
                     print("me --> [", input_text, "]")
                     self.process_text(input_text, color_id, face_id, stage_id, question_id, question, answer_id, answered, archetype_id, archetype, pulsing, show_image, video_id)
                 except sr.UnknownValueError:
-                    print("Google Speech Recognition could not understand audio")
+                    if question.value == True:
+                        self.speech_engine.respond(self.repeat_text)
+                    else:
+                        print("Google Speech Recognition could not understand audio")
                 except sr.RequestError as e:
                     print("Could not request results from Google Speech Recognition service; {0}".format(e))
+                except Exception as e:
+                    print(e)
+                    self.speech_engine.respond("Network error")
+
             else:
                 print("Ignoring audio")
 
@@ -98,27 +111,17 @@ class AI:
         if question.value:
             # Pull question
             question_dict = self.stage['questions'][question_id.value]
-
-            # If we have more than one answer, find closest match
-            # if len(question_dict['answers']) > 1:
-
-            # stop_words = set(stopwords.words('english'))
             input_tokens = word_tokenize(input_text.lower())
-            # input_filtered = [w for w in input_tokens if not w.lower() in stop_words]
-            input_filtered = input_tokens
 
             answer_common_words = []
             # Loop through answers and get number of common words
             for answer in question_dict['answers']:
                 answer_tokens = word_tokenize(answer['text'].lower())
-                # answer_filtered = [w for w in answer_tokens if not w.lower() in stop_words]
-                answer_filtered = answer_tokens
-
-                common_words = list(set(input_filtered).intersection(answer_filtered))
+                common_words = list(set(input_tokens).intersection(answer_tokens))
                 answer_common_words.append(len(common_words))
 
             # If we have no matching words and we're not ignoring the response:
-            if (max(answer_common_words) == 0) and (stage_id.value not in (1,10)):
+            if (max(answer_common_words) == 0) and (not self.ignore_answer):
                 self.speech_engine.respond(self.repeat_text)
                 return
 
@@ -128,10 +131,13 @@ class AI:
                 answer_id.value = answer_common_words.index(max(answer_common_words))
                 answer = question_dict['answers'][answer_id.value]
 
+                # Add to tally
+                self.score = self.score + answer_id.value
+
                 # Update variables but don't say anything
                 self.update_variables(answer, color_id, face_id, pulsing, show_image, text=False, response=False)
 
-                if stage_id.value > 1:
+                if stage_id.value > 0 and (not self.ignore_answer):
                     # Pause a moment
                     print('sleeping...')
                     time.sleep(2)
@@ -160,6 +166,9 @@ class AI:
 
         #Pull new stage
         self.stage = self.script[stage_id.value]
+        if 'ignore_answer' in self.stage:
+            self.ignore_answer = False if self.stage['ignore_answer'] == 'False' else True
+
         if 'voice' in self.stage:
             self.speech_engine.voice_name = self.stage['voice']
 
@@ -171,16 +180,27 @@ class AI:
             for line in self.stage['dialog']:
                 self.update_variables(line, color_id, face_id, pulsing, show_image)
 
+                if 'generate_image' in line:
+                    if self.use_redis:
+                        self.r.set('generate_image', True)
+
+                        while self.r.get('generate_image'):
+                            time.sleep(0.1)
+
+                    else:
+                        print("sleeping...")
+                        time.sleep(5)
+
+
         # Select an archetype at random
         if 'archetypes' in self.stage:
-            print("sleeping...")
-            time.sleep(5)
 
-            face_id.value = self.faces.index('happy.png')
-            self.speech_engine.respond('Got it!')
-            self.speech_engine.respond('You are...')
+            # Find archetype ID
+            archetype_id.value = min(int(7 * self.score/(3*5)), 6)
 
-            archetype_id.value = random.randint(0, len(self.stage['archetypes'])-1)
+            print("Score: " + str(self.score))
+            print("Archetype ID: " + str(archetype_id.value))
+
             archetype_dict = self.stage['archetypes'][archetype_id.value]
             archetype.value = True
 
@@ -225,11 +245,11 @@ class AI:
         if 'face' in dictionary:
             face_id.value = self.faces.index(dictionary['face'])
 
+        if 'pulsing' in dictionary:
+            pulsing.value = False if dictionary['pulsing'] == 'False' else True
+
         if text and ('text' in dictionary):
             self.speech_engine.respond(dictionary['text'])
 
         if response and ('response' in dictionary):
             self.speech_engine.respond(dictionary['response'])
-
-        if 'pulsing' in dictionary:
-            pulsing.value = False if dictionary['pulsing'] == 'False' else True

@@ -1,6 +1,5 @@
 import multiprocessing as mp
 from ctypes import c_bool
-import json
 from sensors import Sensors
 from ai import AI
 from bulbs import Bulbs
@@ -82,7 +81,7 @@ if __name__ == "__main__":
     
     color_id = mp.Value('i', 0)
     face_id = mp.Value('i', 0)
-    stage_id = mp.Value('i', 7)
+    stage_id = mp.Value('i', 0)
     question_id  = mp.Value('i', 99)
     question = mp.Value(c_bool, False)
     answer_id  = mp.Value('i', 99)

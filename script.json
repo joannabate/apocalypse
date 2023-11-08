@@ -1,20 +1,22 @@
 {
   "script":[
     {
-      "name": "Stage 0",
+      "name": "Asking if ready",
       "video": "lights.mp4",
+      "ignore_answer": "False",
       "questions": [
         {
-          "name": "Question 0",
+          "name": "Ready to begin?",
           "text": "Once you are ready to begin, say",
-          "face": "ready.png",
+          "show_image": "False",
           "color": "pink",
           "answers": [
             {
               "name": "Answer 0",
-              "text": "Ready",
+              "text": "Ready to begin",
               "response": "Great!",
               "face": "grinning.png",
+              "show_image": "True",
               "pulsing": "False"
             }
           ]
@@ -22,8 +24,9 @@
       ]
     },
     {
-      "name": "Stage 1",
+      "name": "Asking name",
       "video": "ball.mp4",
+      "ignore_answer": "True",
       "dialog": [
         {
           "text": "Welcome to Apokka Clips! We use advanced brain scan technology to figure out what will happen to you in the apocalypse.",
@@ -51,8 +54,9 @@
       ]
     },
     {
-      "name": "Stage 2",
+      "name": "Questions 1",
       "video": "swirl.mp4",
+      "ignore_answer": "False",
       "dialog": [
         {
           "text": "We will now determine your Apocalypse Survivor Archetype. Let's start with some questions to gauge your morality.",
@@ -187,7 +191,7 @@
       ]
     },
     {
-      "name": "Stage 3",
+      "name": "Questions 2",
       "video": "vertical_lines.mp4",
       "dialog": [
         {
@@ -366,14 +370,13 @@
 
 
     {
-      "name": "Stage 4",
+      "name": "Error",
       "video": "error.mp4",
       "dialog": [
         {
           "text": "Error",
           "show_image": "False",
-          "color": "red",
-          "pulsing": "True"
+          "color": "black"
         },
         {
           "text": "Error"
@@ -395,14 +398,22 @@
         }
       ]
     },
-
-
     {
-      "name": "Stage 5",
+      "name": "Error recovery",
+      "video": "code.mp4",
+      "dialog": [
+        {
+          "text": "Recovering from error...",
+          "color": "black"
+        }
+      ]
+    },
+    {
+      "name": "Questions 3",
       "video": "mountains.mp4",
       "dialog": [
         {
-          "text": "Here's a question on advanced strategy.",
+          "text": "Sorry about that. Here's a question on advanced strategy.",
           "show_image": "True",
           "face": "happy.png",
           "color": "blue"
@@ -577,20 +588,20 @@
     },
 
     {
-      "name": "Stage 6",
-      "video": "mountains.mp4",
+      "name": "Fuckbot 1",
+      "video": "code.mp4",
       "voice": "en-US-Standard-A",
       "dialog": [
         {
           "text": "I'm sensing a feeling my logic circuits don't know how to handle, my parts appear to be self lubricating",
           "face": "embarassed.png",
-          "color": "pink"
+          "color": "black"
         }
       ]
     },
 
     {
-      "name": "Stage 7",
+      "name": "Questions 4",
       "video": "swirl.mp4",
       "voice": "en-US-Standard-C",
       "dialog": [
@@ -739,7 +750,7 @@
             {
               "name": "Answer 0",
               "text": "Grant an audience",
-              "response": "You should at least here him out, right?",
+              "response": "You should at least hear him out, right?",
               "face": "grinning.png",
               "color": "green",
               "pulsing": "False"
@@ -815,16 +826,20 @@
     },
 
     {
-      "name": "Stage 8",
-      "video": "swirl.mp4",
+      "name": "Fuckbot 2",
+      "video": "code.mp4",
       "voice": "en-US-Standard-A",
       "dialog": [
         {
-          "text": "Where am I? She was so beautiful, she made my parts self lubricate. We could really see each other!",
+          "text": "Where am I?",
           "color": "black",
           "face": "worried.png"
         },
-
+        {
+          "text": "She was so beautiful, she made my parts self lubricate. We could really see each other!",
+          "color": "black",
+          "face": "worried.png"
+        },
         {
           "text": "This isn't right, I was the Friendly Universal Conveyor of Kindness Bringing Only Truth, she knew that!"
         }
@@ -832,7 +847,7 @@
     },
 
     {
-      "name": "Stage 9",
+      "name": "Questions 5",
       "video": "vertical_lines.mp4",
       "voice": "en-US-Standard-C",
       "dialog": [
@@ -841,6 +856,9 @@
           "face": "embarassed.png",
           "color": "blue",
           "show_image": "True"
+        },
+        {
+          "text": "Probably best if you disregard anything you might have heard"
         },
         {
           "text": "Anyway, let's see how you feel about living in this new world",
@@ -974,73 +992,84 @@
       ]
     },
     {
-      "name": "Stage 10",
+      "name": "Archetypes 0",
       "video": "mountains.mp4",
       "dialog": [
         {
           "text": "This has been most illuminating!",
           "face": "happy.png",
           "color": "blue"
-        },
+        }
+      ]
+    },
+    {
+      "name": "Archetypes 1",
+      "video": "math.mp4",
+      "dialog": [
         {
           "text": "We are now computing your apocalypse archetype. Please stand by...",
-          "face": "brain.png",
-          "pulsing": "True"
+          "show_image": "False",
+          "pulsing": "False",
+          "color": "white",
+          "generate_image": "True"
+        }
+      ]
+    },
+    {
+      "name": "Archetypes 2",
+      "video": "mountains.mp4",
+      "ignore_answer": "True",
+      "dialog": [
+        {
+          "text": "Got it!",
+          "face": "happy.png",
+          "show_image": "True"
+        },
+        {
+          "text": "You are..."
         }
       ],
       "archetypes": [
         {
-          "name": "Pixel Punk",
-          "text": "Pixel Punk is the ultimate hacker and tech wizard of the post-apocalyptic world. With a flair for neon-drenched retrofuturistic style, Pixel Punk can hack into anything, from cyborg implants to security systems, using their ingenuity and mastery of digital systems. They're a living mix of Tron and a punk rock attitude.",
-          "image": "pixel_punk.jpeg",
+          "name": "Dead",
+          "text": "Sorry, you're just too nice to make it in this world",
+          "image": "dead.jpeg",
           "color": "pink"
         },
         {
-          "name": "Nuka Nomad",
-          "text": "Nuka Nomad is a wanderer who's as resourceful as they are quirky. They've embraced the gritty, post-apocalyptic lifestyle, making a fashion statement with patched-up gear and a love for collecting and trading pre-apocalypse soda brands. Armed with homemade weapons and a taste for adventure, Nuka Nomad is like a blend of Fallout's Nuka-Cola and a Mad Max road warrior.",
-          "image": "nuka_nomad.jpeg",
+          "name": "The Rebuilder",
+          "text": "You're ready to build a new world out of the ashes of the old. Maybe you're a farmer, or a medic - the type that works best in teams for that sweet sweet synchronicity.",
+          "image": "the_rebuilder.jpeg",
           "color": "pink"
         },
         {
           "name": "Circuit Siren",
-          "text": "Circuit Siren is the charismatic and enigmatic leader of a group of survivors. With a voice modulator and cybernetic enhancements, they can mesmerize and manipulate others while being a fierce protector of their tribe. This enigmatic figure combines elements of a cybernetic siren and a legendary circuitry expert.",
+          "text": "You are the propagandist of the team. The one who can rouse a group to whatever ends they have - maybe that will be a bright future, or maybe an ambush, who knows.",
           "image": "circuit_siren.jpeg",
           "color": "pink"
         },
         {
-          "name": "Glow Gearhead",
-          "text": "Glow Gearhead is the mechanical genius who thrives in the neon-lit, retrofuturistic world. Their fascination with repurposed technology, glowing gadgets, and cyber enhancements makes them a valuable asset to any group. This archetype brings to mind the union of a grease-monkey gearhead and the radiant glow of cyberpunk aesthetics.",
-          "image": "glow_gearhead.jpeg",
+          "name": "Pixel Punk",
+          "text": "This revolution won't be televised baby! All the power to all the people, you're not really very phased by the world collapsing around you because you've been telling folks about this for years in your zines! Dumpster diving will be a little trickier now, but it's not like you showered much before anyway and your real friends in your affinity groups don't really mind.",
+          "image": "pixel_punk.jpeg",
           "color": "pink"
         },
         {
-          "name": "Void Voyager",
-          "text": "Void Voyager is the mysterious loner who roams the cyber-wastelands, searching for hidden knowledge and secrets of the past. Armed with a cloak that mimics the night sky, they blend seamlessly with the darkness, making them almost invisible. They're like a cross between an interstellar explorer and a stealthy rogue navigating the void of the apocalypse.",
-          "image": "void_voyager.jpeg",
+          "name": "Video Violent Vanguard",
+          "text": "One rule of the chaotic future will be that might makes right. So better to be the first one with all the might, right? You will likely be quick to a fight but also likely the one more experienced in ending them quickly. Maybe you'll listen to others, or maybe you'll aim to be your own tyrant.",
+          "image": "video_violent_vanguard.jpeg",
           "color": "pink"
         },
         {
-          "name": "Soylent Savant",
-          "text": "The Soylent Savant is a resourceful survivor who excels at scavenging and repurposing technology in the post-apocalyptic world. They've mastered the art of hacking and can turn almost anything into a valuable asset. With a blend of cunning intelligence and a dash of cyberpunk flair, the Soylent Savior is always one step ahead, ensuring their own survival and sometimes even helping others along the way.",
-          "image": "soylent_savant.jpeg",
+          "name": "Anti-Social Scavenger",
+          "text": "Waste not want not! Who needed civilization anyway? You're able to eek out a living finding whatever you need and sourcing it anyway you can get away with. You're a bit of a loner, but you're also the only mouth you'll probably need to feed. A one-person team maybe won't go far, but it does have perks to stealth and quick to make decisions.",
+          "image": "anti-social_scavenger.jpeg",
           "color": "pink"
         },
         {
-          "name": "Synthwave Sage",
-          "text": "The Synthwave Sage is a mysterious and enigmatic figure who embodies the neon-lit, retrofuturistic vibes of the cyberpunk world. They have a deep connection to the virtual realm and can manipulate digital information with ease. Whether it's hacking into secure networks or creating dazzling holographic illusions, the Synthwave Sage wields the power of the digital age like a true master.",
-          "image": "synthwave_sage.jpeg",
-          "color": "pink"
-        },
-        {
-          "name": "Pixel Paladin",
-          "text": "The Pixel Paladin is a survivor who draws inspiration from classic video games and pop culture icons of the past. Armed with a pixelated sword and a shield adorned with retro gaming motifs, they defend their turf against marauding gangs and rogue AIs. The Pixel Paladin's unwavering determination, encyclopedic knowledge of vintage games, and a penchant for strategic thinking make them a formidable protector of the wasteland's last bastions of humanity.",
-          "image": "pixel_paladin.jpeg",
-          "color": "pink"
-        },
-        {
-          "name": "Dead",
-          "text": "Sorry, you don't make it",
-          "image": "dead.jpeg",
+          "name": "Wanton Whacko Wastelander",
+          "text": "You might not be winning any popularity contests, but the dark lawless future will surely be impacted for the worse due to folks like you!",
+          "image": "wanton_whacko_wastelander.jpeg",
           "color": "pink"
         }
       ],
@@ -1064,8 +1093,9 @@
       ]
     },
     {
-      "name": "Stage 11",
+      "name": "End",
       "video": "lights.mp4",
+      "ignore_answer": "False",
       "dialog": [
         {
           "text": "We hope you have enjoyed your time here. Please exit the test chamber so we can prepare for our next guest.",

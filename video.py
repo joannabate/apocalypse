@@ -14,6 +14,8 @@ class Video:
         self.script = helpers.build_script()
         self.archetypes = helpers.build_archetypes()
 
+        self.num_stages = len(self.script)
+
         return
 
     def put_text(self, frame, text, color, a):
@@ -81,10 +83,24 @@ class Video:
                         # Resize frame
                         frame = cv2.resize(frame, (self.width, self.height))
 
-                        # If no-one is sitting and we're not at the end of the test
-                        if (not sensor_flag.value) and (stage_id.value != 11):
+                        # If no-one is sitting and we're not on the last stage
+                        if not sensor_flag.value and (stage_id.value != self.num_stages-1):
 
                             text = "Please be seated"
+                            color = (255,255,255)
+
+                            cv2.putText(img=frame,
+                                text=text,
+                                org=(125, 300),
+                                fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+                                fontScale=2,
+                                color=color,
+                                thickness=3)
+                        
+                        # Show name of question on screen
+                        elif stage_id.value == 0:
+                            text = "Ready to begin?"
+
                             color = (255,255,255)
 
                             cv2.putText(img=frame,
@@ -119,7 +135,7 @@ class Video:
                                     frame = self.put_text(frame, text, color, a)
                                     
                         
-                        # Load archetype image or face image
+                        # Load face image
                         else:
                             if show_image.value:
                                 if archetype.value:
@@ -147,8 +163,8 @@ class Video:
                                 if archetype.value:
                                     frame[y1:y2, x1:x2] = img
 
-                                # For faces, make sure image is transparent
                                 else:
+                                    # For faces, make sure image is transparent
                                     alpha_s = img[:, :, 2] / 255.0
                                     alpha_l = 1.0 - alpha_s
 

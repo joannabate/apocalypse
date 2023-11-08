@@ -1,7 +1,7 @@
 import time
-import math
 from platypush.context import get_plugin
 import helpers
+import math
 
 N_BULBS = 6
 
@@ -26,6 +26,7 @@ class Bulbs:
     def run(self, color_id, pulsing, sensor_flag):
         c_id = -1
         s_flag = sensor_flag.value
+        t_secs = int(time.time())
 
         while True:
             # If someone is sitting down, do normal light logic
@@ -45,7 +46,14 @@ class Bulbs:
                     s_flag = sensor_flag.value 
 
                 if pulsing.value:
-                    brightness = int(254 * (1 + math.sin(2 * math.pi * (time.time() % 5)/5))/2)
+                    # If the time in seconds has changed
+                    if t_secs != int(time.time()):
+                        # brightness = int(254 * (1 + math.sin(2 * math.pi * (time.time() % 5)/5))/2)
+                        if int(time.time()) % 2 == 0:
+                            brightness = 254
+                        else:
+                            brightness = 0
+                        t_secs = int(time.time())
                     self.update_bulbs(brightness=brightness)
 
             # If no-one is sitting down, ignore light logic and set white light
